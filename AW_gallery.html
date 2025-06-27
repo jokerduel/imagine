@@ -207,7 +207,7 @@
   let isDragging = false;
   let currentTranslate = 0;
   let modalImgWrapper = document.querySelector(".modal-content-wrapper");
-  
+
   const showModal = (index) => {
     const img = images[index];
     modal.style.display = "flex";
@@ -215,20 +215,21 @@
     captionText.textContent = img.alt;
     captionText.style.color = img.dataset.color || "#fff";
     currentIndex = index;
-    
-    if(!modalIsOpen) {
+
+    if (!modalIsOpen) {
       history.pushState({ modal: true }, "");
     }
     modalIsOpen = true;
-    
 
-    // Preload the next full image
-    const preloadNext = (index + 1) % images.length;
-    const preloadImg = new Image();
-    preloadImg.src = images[preloadNext].dataset.full;
+    // Preload next and previous full images
+    const preload = [ (index + 1) % images.length, (index - 1 + images.length) % images.length ];
+    preload.forEach(i => {
+      const preloadImg = new Image();
+      preloadImg.src = images[i].dataset.full;
+    });
+
     // Reset image position and transition (important for swipe)
     modalImg.style.transform = "translateX(0)";
-    modalImg.style.transition = "none";
   };
 
   const closeModal = () => {
@@ -246,8 +247,23 @@
 
   const navigate = (dir) => {
     if (images.length === 0) return;
-    currentIndex = (currentIndex + dir + images.length) % images.length;
-    showModal(currentIndex);
+
+    const nextIndex = (currentIndex + dir + images.length) % images.length;
+    const nextImg = new Image();
+    nextImg.src = images[nextIndex].dataset.full;
+
+    // Hide current image to avoid flicker/snapback
+    modalImg.style.visibility = "hidden";
+
+    nextImg.onload = () => {
+      modalImg.src = nextImg.src;
+      captionText.textContent = images[nextIndex].alt;
+      captionText.style.color = images[nextIndex].dataset.color || "#fff";
+      currentIndex = nextIndex;
+      modalImg.style.transform = "translateX(0)";
+      modalImg.style.transition = "none";
+      modalImg.style.visibility = "visible";
+    };
   };
 
   closeBtn.onclick = closeModal;
@@ -267,7 +283,7 @@
       closeModal();
     }
   });
-  
+
   modal.addEventListener("touchstart", (e) => {
     touchStartX = e.changedTouches[0].screenX;
     isDragging = true;
@@ -292,32 +308,32 @@
     modalImg.style.transition = "transform 0.2s ease";
     modalImg.style.transform = "translateX(0)";
     setTimeout(() => {
-      modalImg.style.transition = ""; // Clear it so it's smooth for next interaction
+      modalImg.style.transition = "";
     }, 200);
 
     if (Math.abs(deltaX) > swipeThreshold) {
       if (deltaX < 0) {
-        navigate(1); // Swipe left
+        navigate(1);
       } else {
-        navigate(-1); // Swipe right
+        navigate(-1);
       }
     }
   });
 
-
   function handleSwipeGesture() {
     const deltaX = touchEndX - touchStartX;
-    const swipeThreshold = 50; // Minimum distance in px
+    const swipeThreshold = 50;
 
     if (Math.abs(deltaX) > swipeThreshold) {
       if (deltaX < 0) {
-        navigate(1); // Swipe left → next
+        navigate(1);
       } else {
-        navigate(-1); // Swipe right → previous
+        navigate(-1);
       }
     }
   }
 </script>
+
 
 </p><hr><p style="font-size:8pt">
 A Magi-Nation fan site for image generation<br>
