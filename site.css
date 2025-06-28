@@ -55,17 +55,8 @@ footer {
   color: #333;
 }
 
-/* GALLER*/
-
-.gallery-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem; 
-  background: rgba(255, 255, 255, 1.0);
-  #padding: 1rem;
-  border-radius: 12px;
-}
-.region-block {
+/* GALLERY*/
+.gallery-block{
   background: rgba(255, 255, 255, 0.95);
   margin: 24px auto;
   #padding: 20px;
@@ -82,7 +73,7 @@ h2.set-name {
   margin-top: 20px;
 }
 
-h3.region-header {
+h3.gallery-header {
   font-family: 'Segoe UI', sans-serif;
   font-size: 28pt;
   margin: 30px 0 10px 0;
@@ -114,6 +105,8 @@ h3.region-header {
   transform: scale(1.03);
 }
 
+/* MODAL */
+
 .modal {
   display: none;
   justify-content: center;
@@ -143,7 +136,7 @@ h3.region-header {
   text-align: center;
   color: #ffffff;
   font-size: 1.2em;
-  padding: 8px 12px;
+  padding: 16px 16px;
   pointer-events: none;
 }
 
@@ -177,10 +170,32 @@ h3.region-header {
 
 @media screen and (max-width: 600px) {
   h2 { font-size: 24pt; }
-  h3.region-header { font-size: 20pt; }
+  h3.gallery-header { font-size: 20pt; }
   #caption { font-size: 16pt; }
   .modal-arrow { font-size: 36px; }
   .modal-close { font-size: 32px; top: 10px; right: 20px; }
+}
+
+
+/* DETAILS */
+
+.details {
+  padding: 12px;
+  font-size: 1rem;
+  text-align: justify
+}
+
+.details summary {
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.details > div {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 0px;
+  line-height: 1.5;
 }
 
 /* INDEX */
@@ -239,6 +254,16 @@ justify-content: center;
 flex-shrink: 0;
 box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 border: 1px solid #888; 
+}
+
+.restoration-icon-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid #888;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  display: block; /* Prevents inline spacing issues */
 }
 
 .category-group {
