@@ -176,7 +176,19 @@ h3.gallery-header {
   .modal-close { font-size: 32px; top: 10px; right: 20px; }
 }
 
-
+/* GUIDE */ 
+.guide-section {
+  text-align: justify;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.guide-section img {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
 /* DETAILS */
 
 .details {

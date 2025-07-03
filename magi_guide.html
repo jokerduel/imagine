@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imagine - Base Set Gallery</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="site.css">
+  <script src="gallery.js" defer></script>
+</head>
+<body>
+<center>
+  <header class="top-banner">
+    <a href="index.html"><img src="indeximages/logo.webp" alt="Logo" class="top-logo" /></a>
+    <a href="index.html"><img src="indeximages/title.webp" alt="Imagine" class="top-logo" /></a>
+  </header>
+  <h2  class="set-name">Magi Generation Guide</h2>
+<div class="gallery-block">
+  <h3 class="gallery-header">Running Locally</h3>
+  <div class="guide-section">
+    <p>
+      This section has only been tested locally using an RTX 5090 (32 GB VRAM). However, it should also work with longer generation times on more modest setups like a 16 GB VRAM Nvidia card such as the RTX 4060 Ti. 
+      <a href="https://old.reddit.com/r/StableDiffusion/comments/1ehw52c/flux_on_16gb_vram_4060ti_16gb/">See this Reddit post for reference</a>. If you don't have the required hardcore go to the Running Online section below.
+    </p>
+
+    <p>
+      If your hardware meets the requirements, start by learning the basics of ComfyUI. Make sure you can run simple workflows before moving on to Magi-specific generation. 
+      <a href="https://comfyanonymous.github.io/ComfyUI_examples/flux/">Follow this guide to get started (use the Flux Dev version)</a>.
+    </p>
+
+    <p>
+      Once you have a basic image generation workflow working download the <a href="files/imagine_magi_workflow.json" download>imagine_magi_workflow.json</a> (right click -> save as) and drag it into ComfyUI. Install any missing custom nodes if prompted, and update any inputs (e.g., use the <code>fp8 flux1-dev</code> model version if needed).
+    </p>
+    <p>
+      Then, download the Imagine.Magi.Generator LoRA from 
+      <a href="https://tensor.art/models/880569694757636142">Tensor.art</a> 
+      (or use this <a href="https://www.mediafire.com/file/tc4dh4921fitpsc/imagine.magi.generator.beta.001.safetensors/file">mirror</a>), and place the file into your <code>ComfyUI/models/loras</code> folder.
+    </p>
+
+    <p>
+      The following prompt should be prefilled in the workflow:
+    </p>
+    <blockquote>
+      naroom_magi, female, long blonde wavy hair, blue eyes, light skin, brown boots, stylish outfit, walking in green forest
+    </blockquote>
+
+    <p>
+      Press <strong>Run</strong> to generate an image. If your setup matches exactly, you should see the result below:
+    </p>
+
+    <img src="files/comfyui_workflow_output_example.png" alt="Example output from ComfyUI workflow" />
+
+    <p>
+      At 1024x1024 resolution and 40 steps, image generation completes in about 19 seconds. Reducing the steps to 20 speeds it up to around 12 seconds, though the output may be lower quality.
+    </p>
+
+    <p>
+      By default, the seed changes automatically, allowing you to queue many prompts for varied results. If you like an image but want to tweak details, you can re-use its seed: drag the image back into ComfyUI and copy its seed. Then try adjusting the number of steps (e.g., increase from 20 or decrease from 40) or modify the <code>flux_shift</code> value, which keeps the core composition while subtly changing visual details.
+    </p>
+    <br>
+  </div>
+</div>
+<div class="gallery-block">
+  <h3 class="gallery-header">Running Online</h3>
+  <div class="guide-section">
+    <p>
+      You can run a low-power version of this model online for free. Images will be lower quality compared to the local workflow since the online version only uses <code>fp8</code> instead of <code>fp16</code>, even with a paid account. On the paid tier, you can increase the step count from 25 to 40, but a true Flux Dev model with full <code>fp16</code> precision is not yet available online.
+    </p>
+
+    <p>
+      To try it online follow these steps:
+    </p>
+
+    <ol>
+      <li>Go to <a href="https://tensor.art/models/880569694757636142">tensor.art/models/880569694757636142</a></li>
+      <li>Click <strong>Run</strong> (blue button, top right)</li>
+      <li>At the popup, choose <strong>Use recommended</strong></li>
+      <li>Sign in or create an account</li>
+      <li>Adjust the following parameters:
+        <ul>
+          <li>VAE: <code>ae.sft</code></li>
+          <li>Resolution: <code>1024x1024</code></li>
+          <li>Sampler Method: <strong>Advanced Enabled</strong>
+            <ul>
+              <li>Sampler: <code>euler</code></li>
+              <li>Scheduler: <code>simple</code></li>
+              <li>Sampling Steps: <code>25</code></li>
+              <li>Guidance Scale: <code>3.5</code></li>
+              <li>Seed: <code>Random</code></li>
+            </ul>
+          </li>
+          <li>Clip Encoder: <code>T5xxl_fp16.safetensors</code></li>
+        </ul>
+      </li>
+      <li>Click <strong>Save Presets</strong> (bottom of the panel)</li>
+      <li>Scroll to the top, type your prompt (see the Prompt Guide)</li>
+      <li>Click <strong>Generate</strong> (uses 2 credits)</li>
+    </ol>
+
+    <p>
+      Using the prompt below, the system generated this image:
+    </p>
+
+    <blockquote>
+      orothe_magi, female, light blue skin, white wavy hair, glowing blue eyes, wearing flowing dress of shells, underwater with arms outstretched, vortex swirling around, ocean floor, sunbeams from surface
+    </blockquote>
+
+    <img src="files/online_workflow_example.png" alt="Online model output example" />
+
+    <p>
+      This was the first image generated (not cherry picked) and shows a common limitation of the low-power online model: it sometimes can't decide between details, like whether to use a foot or a mermaid tail so it blends both. If you have an Nvidia graphics card, consider setting up a local workflow instead to minimize this issue.
+    </p>
+
+    <p>
+      For card art minor mistakes may end up outside the frame. Use an image editing program that supports layers and transparency, such as 
+      <a href="https://www.getpaint.net/">Paint.NET</a>, and copy your image into the card frame template found 
+      <a href="templates.html">here</a>. The result can look like this:
+    </p>
+
+    <img src="files/online_workflow_card_example.png" alt="Card-style result from online workflow" />
+    <p>
+     If there are extra details like the hair or a staff that are going out of frame use the eraser tool on the template layer.
+    </p>
+    <br>
+  </div>
+</div>
+<div class="gallery-block">
+  <h3 class="gallery-header">Prompt Guide</h3>
+  <div class="guide-section">
+    <p>
+      Flux prompts use natural language. There are no strict rules, but you may get better results by following the general format used during training.
+    </p>
+
+    <h4>Recommended Prompt Structure</h4>
+    <ol>
+      <li>Region tag</li>
+      <li>Gender</li>
+      <li>Character description</li>
+      <li>Environment description</li>
+    </ol>
+
+    <p>Use a comma-separated list for prompts.</p>
+
+    <h4>Prompt Details</h4>
+    <ol>
+      <li>
+        <strong>Region Tag</strong>: Use the format <code>[region]_magi</code>. Valid region tags:
+        <ul>
+          <li>arderial_magi</li>
+          <li>bograth_magi</li>
+          <li>cald_magi</li>
+          <li>core_magi</li>
+          <li>dresh_magi</li>
+          <li>kybarsteeth_magi</li>
+          <li>nar_magi</li>
+          <li>naroom_magi</li>
+          <li>orothe_magi</li>
+          <li>paradwyn_magi</li>
+          <li>underneath_magi</li>
+          <li>universal_magi</li>
+          <li>weave_magi</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Gender</strong>: Add <code>male</code> or <code>female</code>.
+      </li>
+
+      <li>
+        <strong>Appearance</strong>:
+        <ul>
+          <li>Age (e.g., young, elder)</li>
+          <li>Skin tone</li>
+          <li>Eyes:
+            <ul>
+              <li>blue eyes, orange eyes, green eyes</li>
+              <li>eyes closed</li>
+              <li>eyes hidden</li>
+              <li>glasses</li>
+            </ul>
+          </li>
+          <li>Clothing and outfits</li>
+          <li>Tail (if applicable)</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Special Training Tags</strong>:
+        <ul>
+          <li>Cactus balls in d'Resh: <code>cactus_ball</code></li>
+          <li>Orothe mermaids: <code>octopus mermaid</code>, <code>shark mermaid</code>, <code>seahorse mermaid</code></li>
+          <li>d'Resh skin and eyebrow rock tags: <code>skin_rocks</code>, <code>eyebrow_rocks</code></li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Held Items</strong>: Such as staff, weapon, orb, etc.
+      </li>
+
+      <li>
+        <strong>Pose</strong>: walking, standing, crouching, running, etc.
+      </li>
+
+      <li>
+        <strong>Environment</strong>:
+        <ul>
+          <li>Even a simple environment can help:
+            <ul>
+              <li>lava rock environment</li>
+              <li>mountain environment, cloudy sky</li>
+              <li>tropical forest</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Style Tags</strong> (optional): These can improve visual quality if the result feels flat:
+        <ul>
+          <li><code>cartoon fantasy illustration</code></li>
+          <li><code>soft digital brushwork</code></li>
+          <li><code>light painterly texture</code></li>
+          <li><code>bold cel shading</code></li>
+          <li><code>expressive line art</code></li>
+          <li><code>cohesive background rendering</code></li>
+        </ul>
+      </li>
+    </ol>
+
+    <h4>Example Prompt</h4>
+    <p>
+      <code>
+        naroom_magi, female, long blonde wavy hair, blue eyes, light skin, brown boots, stylish outfit, walking in green forest, soft digital brushwork, light painterly texture
+      </code>
+    </p>
+    <br>
+  </div>
+</div>
+
+<footer><p><hr>A Magi-Nation fan site powered by image generation</p></footer>
+</center>
+</body>
+</html>
