@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imagine - Creature Gallery</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="site.css">
+  <script src="gallery.js" defer></script>
+</head>
+<body>
+<center>
+  <header class="top-banner">
+    <a href="index.html"><img src="indeximages/logo.webp" alt="Logo" class="top-logo" /></a>
+    <a href="index.html"><img src="indeximages/title.webp" alt="Imagine" class="top-logo" /></a>
+  </header>
+  <h2  class="set-name">Creature Gallery</h2>
+<div class="gallery-block">
+<br>
+<div class="gallery-container">
+<img class="gallery-image" src="images/creature_gallery_thumbnails/creature_1736346.webp" data-full="images/creature_gallery/creature_1736346.webp" alt="creature_1736346" data-color="#AAAAAA" width="256" height="256">
+<img class="gallery-image" src="images/creature_gallery_thumbnails/creature_7457970.webp" data-full="images/creature_gallery/creature_7457970.webp" alt="creature_7457970" data-color="#AAAAAA" width="256" height="256">
+<img class="gallery-image" src="images/creature_gallery_thumbnails/creature_8683292.webp" data-full="images/creature_gallery/creature_8683292.webp" alt="creature_8683292" data-color="#AAAAAA" width="256" height="256">
+<img class="gallery-image" src="images/creature_gallery_thumbnails/creature_9745924.webp" data-full="images/creature_gallery/creature_9745924.webp" alt="creature_9745924" data-color="#AAAAAA" width="256" height="256">
+</div></div>
+<div class="gallery-block footer-block">
+  <details class="details">
+    <summary>Details</summary>
+    <div>
+      <p>Coming soon...</p>
+    </div>
+  </details>
+</div>
+<footer><p><hr>A Magi-Nation fan site powered by image generation</p></footer>
+</center>
+</body>
+</html>
+
+<!-- Modal Viewer -->
+<div id="modal" class="modal">
+  <span id="close" class="modal-close">&times;</span>
+  <span id="prev" class="modal-arrow left">&#10094;</span>
+  <span id="next" class="modal-arrow right">&#10095;</span>
+  <div class="modal-content-wrapper">
+    <img class="modal-content" id="modal-img">
+  </div>
+  <div id="caption"></div>
+</div>
