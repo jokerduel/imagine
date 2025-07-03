@@ -55,6 +55,11 @@ footer {
   color: #333;
 }
 
+/* Replaced center tag */
+.page-wrapper {
+  text-align: center;
+}
+
 /* GALLERY*/
 .gallery-block{
   background: rgba(255, 255, 255, 0.95);
@@ -181,14 +186,25 @@ h3.gallery-header {
   text-align: justify;
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 1rem;
   line-height: 1.6;
+  box-sizing: border-box;
 }
 .guide-section img {
   width: 50%;
   height: auto;
   display: block;
   margin: 1em auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 600px) {
+  .guide-section {
+    padding: 0 1.25rem; /* Slightly larger padding for very narrow screens */
+  }
+}
+
 /* DETAILS */
 
 .details {
