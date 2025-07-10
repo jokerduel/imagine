@@ -64,7 +64,6 @@ footer {
 .gallery-block{
   background: rgba(255, 255, 255, 0.95);
   margin: 24px auto;
-  #padding: 20px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   max-width: 1280px;
@@ -243,7 +242,8 @@ h3.gallery-header {
   gap: 0.5rem; 
   background: rgba(255, 255, 255, 1.0);
   padding: 1rem;
-  border-radius: 12px;
+  border-radius: 0 0 12px 12px;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 .category-group h2 {
   background: #4a6cf7;
@@ -298,7 +298,6 @@ border: 1px solid #888;
 .category-group {
   margin: 2rem auto;
   max-width: 900px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .category-group h2 {
@@ -307,7 +306,8 @@ border: 1px solid #888;
   border-bottom: 1px solid #999;
   padding-bottom: 0.5rem;
   text-align: center;
-     background-color: #2C84C4;
+  background-color: #2C84C4;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .restoration-icon img {
