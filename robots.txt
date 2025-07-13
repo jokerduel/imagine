@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jokerduel.github.io/imagine/sitemap.xml
