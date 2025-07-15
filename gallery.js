@@ -23,6 +23,7 @@
 
     if (!modalIsOpen) {
       history.pushState({ modal: true }, "");
+      document.body.classList.add("modal-open");
     }
     modalIsOpen = true;
 
@@ -41,6 +42,7 @@
     if (!modalIsOpen) return;
     modal.style.display = "none";
     modalIsOpen = false;
+    document.body.classList.remove("modal-open");
     if (history.state && history.state.modal) {
       history.back();
     }
