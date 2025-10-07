@@ -23,7 +23,7 @@
   <h3 class="gallery-header">Running Locally</h3>
   <div class="guide-section">
     <p>
-      This section has only been tested locally using an RTX 5090 (32 GB VRAM). However, it should also work with longer generation times on more modest setups like a 16 GB VRAM Nvidia card such as the RTX 4060 Ti. 
+      This section has been tested locally using an RTX 5090 (32 GB VRAM). However, it should also work with longer generation times on more modest setups like a 16 GB VRAM Nvidia card such as the RTX 4060 Ti. 
       <a href="https://old.reddit.com/r/StableDiffusion/comments/1ehw52c/flux_on_16gb_vram_4060ti_16gb/">See this Reddit post for reference</a>. If you don't have the required hardware go to the Running Online section below.
     </p>
 
@@ -37,15 +37,15 @@
     </p>
     <p>
       Then, download the Imagine.Magi.Generator LoRA from 
-      <a href="https://tensor.art/models/887011589503362612">Tensor.art</a> 
-      (or use this <a href="https://www.mediafire.com/file/pf5m1ih1niemi3a/imagine.magi.generator.beta.002.safetensors/file">mirror</a>), and place the file into your <code>ComfyUI/models/loras</code> folder.
+      <a href="https://tensor.art/models/907791101916612389">Tensor.art</a> 
+      (or use this <a href="https://www.mediafire.com/file/hl91h207jokyo6c/imagine.magi.generator.release.003.safetensors/file">mirror</a>), and place the file into your <code>ComfyUI/models/loras</code> folder.
     </p>
 
     <p>
       The following prompt should be prefilled in the workflow:
     </p>
     <blockquote>
-      naroom_magi, female, long blonde wavy hair, blue eyes, light skin, brown boots, stylish outfit, walking in green forest
+      magi, naroom_region, female, long blonde wavy hair, blue eyes, light skin, brown boots, stylish outfit, walking in green forest
     </blockquote>
 
     <p>
@@ -106,7 +106,7 @@
     </p>
 
     <blockquote>
-      orothe_magi, female, light blue skin, white wavy hair, glowing blue eyes, wearing flowing dress of shells, underwater with arms outstretched, vortex swirling around, ocean floor, sunbeams from surface
+      magi, orothe_region, female, light blue skin, white wavy hair, glowing blue eyes, wearing flowing dress of shells, underwater with arms outstretched, vortex swirling around, ocean floor, sunbeams from surface
     </blockquote>
 
     <img src="files/online_workflow_example.png" alt="Online model output example" />
@@ -148,21 +148,24 @@
     <h4>Prompt Details</h4>
     <ol>
       <li>
-        <strong>Region Tag</strong>: Use the format <code>[region]_magi</code>. Valid region tags:
+       <strong>Magi Key word</strong>: Start each prompt with <code>magi</code> to activate the model
+      </li>
+      <li>
+        <strong>Region Tag</strong>: Use the format <code>[region]_region</code>. Valid region tags:
         <ul>
-          <li>arderial_magi</li>
-          <li>bograth_magi</li>
-          <li>cald_magi</li>
-          <li>core_magi</li>
-          <li>dresh_magi</li>
-          <li>kybarsteeth_magi</li>
-          <li>nar_magi</li>
-          <li>naroom_magi</li>
-          <li>orothe_magi</li>
-          <li>paradwyn_magi</li>
-          <li>underneath_magi</li>
-          <li>universal_magi</li>
-          <li>weave_magi</li>
+          <li>arderial_region</li>
+          <li>bograth_region</li>
+          <li>cald_region</li>
+          <li>core_region</li>
+          <li>dresh_region</li>
+          <li>kybarsteeth_region</li>
+          <li>nar_region</li>
+          <li>naroom_region</li>
+          <li>orothe_region</li>
+          <li>paradwyn_region</li>
+          <li>underneath_region</li>
+          <li>universal_region</li>
+          <li>weave_region</li>
         </ul>
       </li>
 
@@ -260,7 +263,7 @@
     <h4>Example Prompt</h4>
     <p>
       <code>
-        naroom_magi, female, long blonde wavy hair, blue eyes, light skin, brown boots, stylish outfit, walking in green forest, soft digital brushwork, light painterly texture
+        magi, naroom_region, female, long blonde wavy hair, blue eyes, light skin, brown boots, stylish outfit, walking in green forest, soft digital brushwork, light painterly texture
       </code>
     </p>
     <br>
